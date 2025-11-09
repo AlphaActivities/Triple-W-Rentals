@@ -30,14 +30,28 @@ export default function BookingForm() {
     setStatus("sending");
 
     try {
-      const formData = new FormData(formRef.current);
-      formData.set("form-name", "contact");
+      const fd = new FormData(formRef.current);
+      fd.set("form-name", "contact");
 
-      await fetch("/", { method: "POST", body: formData });
+      const body = new URLSearchParams();
+      for (const [k, v] of fd.entries()) {
+        body.append(k, String(v));
+      }
+
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      });
+
+      if (!res.ok) {
+        console.error("Netlify form submission failed", res.status, res.statusText);
+        setStatus("error");
+        return;
+      }
+
       setStatus("sent");
-
       formRef.current.reset();
-
       setTimeout(() => setStatus("idle"), 6000);
     } catch (err) {
       console.error(err);
