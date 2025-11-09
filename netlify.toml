@@ -1,0 +1,17 @@
+[build]
+  # Force a clean, deterministic install + build
+  command = "npm ci && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_FLAGS = "--loglevel=verbose"
+  NETLIFY_BUILD_DEBUG = "true"
+  # If memory is tight on the build VM, this prevents random OOM exits:
+  NODE_OPTIONS = "--max-old-space-size=4096"
+
+# SPA routing (keep)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
