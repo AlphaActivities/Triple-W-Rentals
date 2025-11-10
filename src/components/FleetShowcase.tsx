@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowRight } from 'lucide-react';
 
 interface FleetItem {
   id: number;
@@ -109,11 +108,7 @@ export default function FleetShowcase() {
               {/* Content */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <h3 className="text-2xl text-white mb-2">{item.name}</h3>
-                <p className="text-gray-300 text-sm mb-4">{item.caption}</p>
-                <button className="flex items-center gap-2 text-[#00A8FF] hover:gap-3 transition-all duration-300 group/btn">
-                  <span>View Details</span>
-                  <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
-                </button>
+                <p className="text-gray-300 text-sm">{item.caption}</p>
               </div>
 
               {/* UV Glow on Hover */}
