@@ -10,8 +10,8 @@ interface FleetItem {
 const fleetData: FleetItem[] = [
   {
     id: 1,
-    name: 'Momentum 2 is an extra large deluxe Toy Hauler',
-    caption: 'that brings to your RV experience all the comfort, space, and breadth of a full home living space.',
+    name: 'Momentum 2 — Extra-Large Deluxe Toy Hauler',
+    caption: 'Brings your RV experience all the comfort, space, and breadth of a full home living space.',
     image: '/images/rs=w_1160,h_766.webp',
   },
   {
