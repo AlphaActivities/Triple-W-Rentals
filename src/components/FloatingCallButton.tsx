@@ -2,7 +2,7 @@ import { Phone } from 'lucide-react';
 
 export default function FloatingCallButton() {
   const handleCall = () => {
-    window.location.href = 'tel:+1234567890';
+    window.location.href = 'tel:+19729656901';
   };
 
   return (
