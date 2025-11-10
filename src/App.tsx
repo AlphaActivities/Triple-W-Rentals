@@ -7,6 +7,7 @@ import ExperienceStrip from './components/ExperienceStrip';
 import BookingForm from './components/BookingForm';
 import ReviewsCarousel from './components/ReviewsCarousel';
 import Footer from './components/Footer';
+import FloatingCallButton from './components/FloatingCallButton';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <BookingForm />
       <ReviewsCarousel />
       <Footer />
+      <FloatingCallButton />
     </div>
   );
 }
