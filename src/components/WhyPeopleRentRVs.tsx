@@ -69,6 +69,7 @@ const reasons: Reason[] = [
 export default function WhyPeopleRentRVs() {
   const [isVisible, setIsVisible] = useState(false);
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [viewportWidth, setViewportWidth] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -91,6 +92,21 @@ export default function WhyPeopleRentRVs() {
   }, []);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       if (expandedIndex !== null) {
         setExpandedIndex(null);
@@ -103,6 +119,18 @@ export default function WhyPeopleRentRVs() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [expandedIndex]);
+
+  const isCardExpanded = (cardIndex: number) => {
+    if (expandedIndex === null) return false;
+
+    if (viewportWidth !== null && viewportWidth >= 1024) {
+      const expandedRow = Math.floor(expandedIndex / 3);
+      const thisRow = Math.floor(cardIndex / 3);
+      return expandedRow === thisRow;
+    }
+
+    return expandedIndex === cardIndex;
+  };
 
   return (
     <section
@@ -175,15 +203,30 @@ export default function WhyPeopleRentRVs() {
 
                 <button
                   type="button"
-                  onClick={() =>
-                    setExpandedIndex(expandedIndex === index ? null : index)
-                  }
+                  onClick={() => {
+                    if (viewportWidth !== null && viewportWidth >= 1024) {
+                      if (expandedIndex === null) {
+                        setExpandedIndex(index);
+                      } else {
+                        const expandedRow = Math.floor(expandedIndex / 3);
+                        const thisRow = Math.floor(index / 3);
+
+                        if (expandedRow === thisRow) {
+                          setExpandedIndex(null);
+                        } else {
+                          setExpandedIndex(index);
+                        }
+                      }
+                    } else {
+                      setExpandedIndex(expandedIndex === index ? null : index);
+                    }
+                  }}
                   className="text-xs md:text-sm text-[#00A8FF] underline-offset-2 hover:underline mb-3 text-left"
                 >
-                  {expandedIndex === index ? 'Hide example' : 'View example'}
+                  {isCardExpanded(index) ? 'Hide example' : 'View example'}
                 </button>
 
-                {expandedIndex === index && (
+                {isCardExpanded(index) && (
                   <p className="text-xs md:text-sm text-gray-300 italic mb-3">
                     {reason.example}
                   </p>
