@@ -5,6 +5,7 @@ interface Reason {
   icon: ReactNode;
   title: string;
   description: string;
+  example: string;
   mainIdea: string;
 }
 
@@ -14,6 +15,8 @@ const reasons: Reason[] = [
     title: 'Freedom and Flexibility',
     description:
       'Go where you want, when you want, from beaches and national parks to mountain towns and hidden small cities, without being locked into hotel check-ins or flight schedules.',
+    example:
+      'Example: A family can drive from Texas to Colorado and sleep in scenic campgrounds instead of paying for multiple hotel nights.',
     mainIdea: 'RV rentals give you complete control over your trip and route.',
   },
   {
@@ -21,6 +24,8 @@ const reasons: Reason[] = [
     title: 'Cost-Effective Travel',
     description:
       'For families or groups, renting an RV can be more affordable than booking multiple hotel rooms and eating out every day. You cook inside, sleep inside, and avoid extra airline and luggage fees.',
+    example:
+      'Example: A family of five can save over $1,000 on a weeklong road trip compared to flights and hotel stays.',
     mainIdea: 'RVs combine transportation and lodging into one smart investment for your trip.',
   },
   {
@@ -28,6 +33,8 @@ const reasons: Reason[] = [
     title: 'Comfort and Convenience',
     description:
       'Modern RVs bring beds, bathrooms, kitchens, AC, and WiFi on the road. No constant packing and unpacking and no searching for restaurants three times a day while you are trying to relax.',
+    example:
+      'Example: Retired couples often rent a Class C motorhome for two to three weeks of comfortable exploration.',
     mainIdea: 'RV rentals bring the comfort of home to every mile you drive.',
   },
   {
@@ -35,6 +42,8 @@ const reasons: Reason[] = [
     title: 'Nature and Adventure',
     description:
       'Perfect for national parks, scenic campgrounds, and outdoor festivals. You can park close to the views you came for, then step back into a warm, secure space whenever you are ready to recharge.',
+    example:
+      'Example: Adventurers rent compact camper vans to visit places like Banff or Yellowstone for hiking and photography trips.',
     mainIdea: 'You get direct access to nature with built-in shelter and freedom.',
   },
   {
@@ -42,6 +51,8 @@ const reasons: Reason[] = [
     title: 'Family and Social Experience',
     description:
       'Cooking together, driving together, and sleeping under the same roof turns a simple road trip into a shared story. Families use RVs for road-schooling, cross-country adventures, and once-in-a-lifetime memory trips.',
+    example:
+      'Example: Parents rent RVs to take their kids on educational road trips across the United States or Canada.',
     mainIdea: 'RV rentals create lasting shared experiences, not just standard vacations.',
   },
   {
@@ -49,6 +60,8 @@ const reasons: Reason[] = [
     title: 'Test the Lifestyle Before You Buy',
     description:
       'Many travelers rent first to see what RV life actually feels like before investing tens of thousands of dollars into a rig. Others use rentals as temporary housing during renovations or relocations.',
+    example:
+      'Example: Some guests rent an RV while their home is being renovated or before committing $50,000 to $200,000 or more to buy their own.',
     mainIdea: 'Renting lets you test-drive the RV lifestyle with zero long-term commitment.',
   },
 ];
@@ -143,6 +156,10 @@ export default function WhyPeopleRentRVs() {
 
                 <p className="text-sm md:text-base text-gray-200 leading-relaxed mb-4">
                   {reason.description}
+                </p>
+
+                <p className="text-xs md:text-sm text-gray-300 italic mb-3">
+                  {reason.example}
                 </p>
 
                 <p className="mt-auto text-xs md:text-sm font-medium text-[#00A8FF]">
