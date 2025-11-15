@@ -136,7 +136,7 @@ export default function WhyPeopleRentRVs() {
     <section
       id="why-rent"
       ref={sectionRef}
-      className="relative bg-gradient-to-b from-[#020617] via-[#0A2540] to-[#001F4F] py-24 px-4 overflow-hidden"
+      className="relative bg-gradient-to-b from-[#020617] via-[#0A2540] to-[#020617] py-24 px-4 overflow-hidden"
     >
       {/* Local animation styles for fade-in-up, matching the existing animation approach */}
       <style>
