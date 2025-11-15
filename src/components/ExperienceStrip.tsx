@@ -11,7 +11,7 @@ export default function ExperienceStrip() {
           Every road becomes <span className="text-[#00b0ff]">home</span> with Triple W Rentals.
         </h2>
         <p className="mt-4 text-gray-200/90 text-base md:text-lg">
-          From Tyler to Tahoe, experience luxury, comfort, and freedom without compromise.
+          From weekend escapes to remote work stays, experience luxury, comfort, and freedom without compromise.
         </p>
       </div>
     </section>

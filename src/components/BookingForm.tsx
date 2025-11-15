@@ -71,7 +71,10 @@ export default function BookingForm() {
             Start Your <span className="text-[#00A8FF] text-glow">Adventure</span>
           </h2>
           <p className="text-gray-400 text-lg">
-            Fill out the form below and we'll get back to you within 24 hours
+            Tell us about your trip, your dates, and who is traveling with you. Whether you are planning a family road trip, a festival weekend, or a season of remote work, we will match you with the right RV and walk you through simple, clear pricing.
+          </p>
+          <p className="text-sm text-gray-400 mt-2">
+            Renting an RV lets you enjoy the lifestyle and the freedom of the road, without a long term purchase commitment.
           </p>
         </div>
 
