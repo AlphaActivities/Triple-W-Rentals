@@ -41,7 +41,7 @@ const reasons: Reason[] = [
     icon: <Mountain size={40} />,
     title: 'Nature and Adventure',
     description:
-      'Perfect for national parks, scenic campgrounds, and outdoor festivals. You can park close to the views you came for, then step back into a warm, secure space whenever you are ready to recharge.',
+      'Perfect for national parks, scenic campgrounds, major events, and outdoor festivals. You can park close to the views and venues you came for, then step back into a warm, secure space whenever you are ready to recharge.',
     example:
       'Example: Adventurers rent compact camper vans to visit places like Banff or Yellowstone for hiking and photography trips.',
     mainIdea: 'You get direct access to nature with built-in shelter and freedom.',
@@ -52,14 +52,14 @@ const reasons: Reason[] = [
     description:
       'Cooking together, driving together, and sleeping under the same roof turns a simple road trip into a shared story. Families use RVs for road-schooling, cross-country adventures, and once-in-a-lifetime memory trips.',
     example:
-      'Example: Parents rent RVs to take their kids on educational road trips across the United States or Canada.',
+      'Example: Parents rent RVs to take their kids on educational road trips across the United States or Canada, creating the ultimate road trip memories.',
     mainIdea: 'RV rentals create lasting shared experiences, not just standard vacations.',
   },
   {
     icon: <GaugeCircle size={40} />,
     title: 'Test the Lifestyle Before You Buy',
     description:
-      'Many travelers rent first to see what RV life actually feels like before investing tens of thousands of dollars into a rig. Others use rentals as temporary housing during renovations or relocations.',
+      'Many travelers rent first to see what RV life actually feels like before investing tens of thousands of dollars into a rig. Others use rentals as temporary housing during renovations, relocations, or remote work assignments.',
     example:
       'Example: Some guests rent an RV while their home is being renovated or before committing $50,000 to $200,000 or more to buy their own.',
     mainIdea: 'Renting lets you test-drive the RV lifestyle with zero long-term commitment.',
@@ -68,6 +68,7 @@ const reasons: Reason[] = [
 
 export default function WhyPeopleRentRVs() {
   const [isVisible, setIsVisible] = useState(false);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -88,6 +89,20 @@ export default function WhyPeopleRentRVs() {
       observer.disconnect();
     };
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (expandedIndex !== null) {
+        setExpandedIndex(null);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [expandedIndex]);
 
   return (
     <section
@@ -158,9 +173,21 @@ export default function WhyPeopleRentRVs() {
                   {reason.description}
                 </p>
 
-                <p className="text-xs md:text-sm text-gray-300 italic mb-3">
-                  {reason.example}
-                </p>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setExpandedIndex(expandedIndex === index ? null : index)
+                  }
+                  className="text-xs md:text-sm text-[#00A8FF] underline-offset-2 hover:underline mb-3 text-left"
+                >
+                  {expandedIndex === index ? 'Hide example' : 'View example'}
+                </button>
+
+                {expandedIndex === index && (
+                  <p className="text-xs md:text-sm text-gray-300 italic mb-3">
+                    {reason.example}
+                  </p>
+                )}
 
                 <p className="mt-auto text-xs md:text-sm font-medium text-[#00A8FF]">
                   {reason.mainIdea}
