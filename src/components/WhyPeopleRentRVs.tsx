@@ -197,7 +197,7 @@ export default function WhyPeopleRentRVs() {
                   </h3>
                 </div>
 
-                <p className="text-sm md:text-base text-gray-200 leading-relaxed mb-4">
+                <p className="text-sm md:text-base text-gray-200 leading-relaxed mb-2">
                   {reason.description}
                 </p>
 
@@ -221,7 +221,7 @@ export default function WhyPeopleRentRVs() {
                       setExpandedIndex(expandedIndex === index ? null : index);
                     }
                   }}
-                  className="text-xs md:text-sm text-[#00A8FF] underline-offset-2 hover:underline mb-3 text-left"
+                  className="text-xs md:text-sm text-[#00A8FF] underline-offset-2 hover:underline mt-1 mb-3 text-left"
                 >
                   {isCardExpanded(index) ? 'Hide example' : 'View example'}
                 </button>
